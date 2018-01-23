@@ -12,8 +12,10 @@ import com.davidcryer.accountalert.R;
 import com.davidcryer.accountalert.common.framework.uiwrapper.UiWrapperFactory;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, AddAccountUi.Listener, UiWrapperFactory> {
+    private Unbinder unbinder;
 
     @Nullable
     @Override
@@ -24,7 +26,13 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedState) {
         super.onViewCreated(view, savedState);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     @Override
