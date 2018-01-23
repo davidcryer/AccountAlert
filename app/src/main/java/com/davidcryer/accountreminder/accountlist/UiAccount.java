@@ -25,7 +25,7 @@ class UiAccount {
         return id;
     }
 
-    void onto(final AccountLayout layout) {
+    private void onto(final AccountLayout layout) {
         layout.title(title);
         layout.description(description);
         layout.notificationDate(notificationDate);

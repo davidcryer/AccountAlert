@@ -26,7 +26,7 @@ public class AccountListFragment extends UiWrapperFactoryFragment<AccountListUi,
     RecyclerView accountsView;
 
     {
-        accountListAdapter = new AccountListAdapter();
+        accountListAdapter = new AccountListAdapter(new AccountLayoutInflater());
     }
 
     public static AccountListFragment newInstance() {

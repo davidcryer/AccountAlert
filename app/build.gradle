@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.davidcryer.accountreminder"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,7 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.davidcryer.uiwrapper:uiwrapper:2.0.0'
     implementation 'com.davidcryer.simpleactivities:simpleactivities:0.0.3'
+    implementation 'com.davidcryer.interactor:interactor:1.0.1'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     testImplementation 'junit:junit:4.12'

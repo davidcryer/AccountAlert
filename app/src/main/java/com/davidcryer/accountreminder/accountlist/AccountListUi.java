@@ -11,6 +11,5 @@ interface AccountListUi {
 
     interface Listener {
         void onClickAddAccount(AccountListUi ui);
-        void onClickAccount(AccountListUi ui, UiAccount account);
     }
 }

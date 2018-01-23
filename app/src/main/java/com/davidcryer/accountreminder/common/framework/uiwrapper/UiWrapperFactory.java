@@ -7,14 +7,33 @@ import android.support.annotation.Nullable;
 import com.davidc.uiwrapper.UiWrapper;
 import com.davidcryer.accountreminder.accountlist.AccountListUiModelImpl;
 import com.davidcryer.accountreminder.accountlist.AccountListUiWrapper;
+import com.davidcryer.accountreminder.addaccount.AddAccountUiModelImpl;
+import com.davidcryer.accountreminder.addaccount.AddAccountUiWrapper;
+import com.davidcryer.accountreminder.common.domain.AddAccountInteractor;
+import com.davidcryer.accountreminder.common.domain.GetAccountsInteractor;
 
 public class UiWrapperFactory {
+    private final GetAccountsInteractor getAccountsInteractor;
+    private final AddAccountInteractor addAccountInteractor;
+
+    public UiWrapperFactory(GetAccountsInteractor getAccountsInteractor, AddAccountInteractor addAccountInteractor) {
+        this.getAccountsInteractor = getAccountsInteractor;
+        this.addAccountInteractor = addAccountInteractor;
+    }
 
     public AccountListUiWrapper accountList(@Nullable final Bundle savedState) {
         return wrapper(
                 savedState,
-                () -> AccountListUiWrapper.newInstance(new AccountListUiModelImpl()),
-                AccountListUiWrapper::savedInstance
+                () -> AccountListUiWrapper.newInstance(new AccountListUiModelImpl(), getAccountsInteractor),
+                nonNullSavedState -> AccountListUiWrapper.savedInstance(nonNullSavedState, getAccountsInteractor)
+        );
+    }
+
+    public AddAccountUiWrapper addAccount(@Nullable final Bundle savedState) {
+        return wrapper(
+                savedState,
+                () -> AddAccountUiWrapper.newInstance(new AddAccountUiModelImpl(), addAccountInteractor),
+                nonNullSavedState -> AddAccountUiWrapper.savedInstance(nonNullSavedState, addAccountInteractor)
         );
     }
 
