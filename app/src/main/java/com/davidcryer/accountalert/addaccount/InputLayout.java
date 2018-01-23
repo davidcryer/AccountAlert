@@ -6,6 +6,7 @@ import android.support.design.widget.TextInputLayout;
 import android.util.AttributeSet;
 
 import com.davidcryer.accountalert.R;
+import com.davidcryer.accountalert.common.AttributeProcessor;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,7 +18,17 @@ public class InputLayout extends TextInputLayout {
     public InputLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         inflate(context, R.layout.layout_input, this);
-        //TODO hint
         ButterKnife.bind(this);
+        process(context, attrs);
+    }
+
+    private void process(final Context context, final AttributeSet attrs) {
+        AttributeProcessor.process(context, attrs, R.styleable.InputLayout, attributes -> {
+            hint(attributes.getString(R.styleable.InputLayout_hint));
+        });
+    }
+
+    private void hint(final String hint) {
+        editText.setHint(hint);
     }
 }
