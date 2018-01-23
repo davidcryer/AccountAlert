@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.davidcryer.accountreminder.addaccount.InputLayout
+    <com.davidcryer.accountalert.addaccount.InputLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" /><!-- TODO hints -->
 
-    <com.davidcryer.accountreminder.addaccount.InputLayout
+    <com.davidcryer.accountalert.addaccount.InputLayout
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.davidcryer.accountreminder.addaccount.InputLayout
+    <com.davidcryer.accountalert.addaccount.InputLayout
         android:id="@+id/nextNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
