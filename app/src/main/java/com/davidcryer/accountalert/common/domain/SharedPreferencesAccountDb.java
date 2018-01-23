@@ -19,7 +19,7 @@ public class SharedPreferencesAccountDb implements AccountDb {
     private final SharedPreferences accountOrders;
     private final Gson gson;
 
-    SharedPreferencesAccountDb(final Context context, final Gson gson) {
+    public SharedPreferencesAccountDb(final Context context, final Gson gson) {
         accounts = context.getSharedPreferences(PREFS_KEY_ACCOUNTS, Context.MODE_PRIVATE);
         accountOrders = context.getSharedPreferences(PREFS_KEY_ORDERS, Context.MODE_PRIVATE);
         this.gson = gson;

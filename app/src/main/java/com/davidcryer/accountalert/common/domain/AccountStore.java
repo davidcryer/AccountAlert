@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-class AccountStore {
+public class AccountStore {
     private final AccountDb db;
     private final AccountCache cache;
 
-    public AccountStore(AccountDb db, AccountCache cache) {
+    {
+        cache = new AccountCache();
+    }
+
+    public AccountStore(AccountDb db) {
         this.db = db;
-        this.cache = cache;
     }
 
     AccountList accountList() {

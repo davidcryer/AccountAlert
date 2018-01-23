@@ -1,9 +1,9 @@
 package com.davidcryer.accountalert.common.domain;
 
-class GetAccountsTask {
+public class GetAccountsTask {
     private final AccountStore store;
 
-    GetAccountsTask(AccountStore store) {
+    public GetAccountsTask(AccountStore store) {
         this.store = store;
     }
 

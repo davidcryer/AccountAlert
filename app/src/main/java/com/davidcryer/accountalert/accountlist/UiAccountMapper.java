@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 class UiAccountMapper {
 
     static List<UiAccount> from(final AccountList accountList) {
-        return accountList.accounts().stream().map(UiAccountMapper::from).collect(Collectors.toList());
+        return accountList.accounts().map(UiAccountMapper::from).collect(Collectors.toList());
     }
 
     private static UiAccount from(final Account account) {

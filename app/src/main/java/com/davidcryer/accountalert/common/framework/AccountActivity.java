@@ -5,12 +5,12 @@ import android.support.v7.app.ActionBar;
 
 import com.davidcryer.accountalert.R;
 import com.davidcryer.accountalert.accountlist.AccountListFragment;
+import com.davidcryer.accountalert.accountlist.AccountListNavigator;
 import com.davidcryer.accountalert.addaccount.AddAccountFragment;
 import com.davidcryer.accountalert.common.Provider;
-import com.davidcryer.accountalert.common.framework.navigators.ToAddAccount;
 import com.davidcryer.simpleactivities.SimpleAppBarActivity;
 
-public class AccountActivity extends SimpleAppBarActivity implements ToAddAccount {
+public class AccountActivity extends SimpleAppBarActivity implements AccountListNavigator {
     private final static String FRAGMENT_ACCOUNT_LIST = "account list";
     private final static String FRAGMENT_ADD_ACCOUNT = "add account";
 

@@ -9,7 +9,7 @@ public class Application extends android.app.Application implements UiWrapperFac
     @Override
     public void onCreate() {
         super.onCreate();
-        uiWrapperFactory = AppDependencies.uiWrapperFactory();
+        uiWrapperFactory = AppDependencies.uiWrapperFactory(this);
     }
 
     @Override
