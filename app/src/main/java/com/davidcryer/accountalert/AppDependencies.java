@@ -15,6 +15,7 @@ import com.davidcryer.accountalert.common.domain.SharedPreferencesAccountDb;
 import com.davidcryer.accountalert.common.framework.uiwrapper.UiWrapperFactory;
 import com.google.gson.Gson;
 
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -40,7 +41,7 @@ class AppDependencies {
     }
 
     private static TaskScheduler taskScheduler() {
-        return new ThreadPoolExecutorAndHandlerTaskScheduler(new ThreadPoolExecutor(2, 3, 2, TimeUnit.SECONDS, new PriorityBlockingQueue<>()), Looper.getMainLooper());
+        return new ThreadPoolExecutorAndHandlerTaskScheduler(new ThreadPoolExecutor(2, 3, 2, TimeUnit.SECONDS, new LinkedBlockingDeque<>()), Looper.getMainLooper());
     }
 
     private static AddAccountTask addAccountTask(final AccountStore accountStore) {
