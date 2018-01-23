@@ -15,10 +15,21 @@
         android:layout_height="wrap_content" />
 
     <com.davidcryer.accountalert.addaccount.InputLayout
-        android:id="@+id/nextNotification"
+        android:id="@+id/next_notification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <!-- TODO repeat type -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_account.submit" />
 
 </LinearLayout>

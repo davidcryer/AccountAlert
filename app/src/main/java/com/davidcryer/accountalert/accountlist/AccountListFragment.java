@@ -55,7 +55,7 @@ public class AccountListFragment extends UiWrapperFactoryFragment<AccountListUi,
     @Override
     public void onStart() {
         super.onStart();
-        getActivity().setTitle(R.string.account_list_title);
+        getActivity().setTitle(R.string.screen_title_account_list);
     }
 
     @Override

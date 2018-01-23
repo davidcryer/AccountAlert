@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Account Alert</string>
 
-    <string name="account_list.title">My Accounts</string>
-    <string name="add_account.title">Add Account</string>
+    <string name="screen.title.account_list">My Accounts</string>
+    <string name="screen.title.add_account">Add Account</string>
+
+    <string name="add_account.title">Title</string>
+    <string name="add_account.description">Description</string>
+    <string name="add_account.next_notification">Next Notification</string>
+    <string name="add_account.repeat">Repeat</string>
+    <string name="add_account.submit">Submit</string>
 </resources>
