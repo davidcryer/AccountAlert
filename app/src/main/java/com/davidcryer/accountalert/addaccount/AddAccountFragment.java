@@ -36,14 +36,10 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_add_account, container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedState) {
-        super.onViewCreated(view, savedState);
+        final View view = inflater.inflate(R.layout.fragment_add_account, container, false);
         unbinder = ButterKnife.bind(this, view);
         nextNotificationDatePicker.setMinDate(System.currentTimeMillis() - 1000L);
+        return view;
     }
 
     @Override

@@ -6,6 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -48,17 +51,19 @@ public class AccountListFragment extends UiWrapperFactoryFragment<AccountListUi,
         navigator = null;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedState) {
+        super.onCreate(savedState);
+        setHasOptionsMenu(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_account_list, container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedState) {
-        super.onViewCreated(view, savedState);
+        final View view = inflater.inflate(R.layout.fragment_account_list, container, false);
         butterKnifeUnbinder = ButterKnife.bind(this, view);
         accountsView.setAdapter(accountListAdapter);
+        return view;
     }
 
     @Override
@@ -74,24 +79,43 @@ public class AccountListFragment extends UiWrapperFactoryFragment<AccountListUi,
     }
 
     @Override
-    protected AccountListUi ui() {
-        return new AccountListUi() {
-            @Override
-            public void accounts(@NonNull List<UiAccount> accounts) {
-                accountListAdapter.accounts(accounts);
-            }
-
-            @Override
-            public void add(@NonNull UiAccount account) {
-                accountListAdapter.add(account);
-            }
-
-            @Override
-            public void showAddAccountUi() {
-                navigator.showAddAccountFragment(AddAccountFragment::newInstance);
-            }
-        };
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.account_list, menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_account: {
+                listener().onClickAddAccount(ui());
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected AccountListUi ui() {
+        return ui;
+    }
+
+    private final AccountListUi ui = new AccountListUi() {
+        @Override
+        public void accounts(@NonNull List<UiAccount> accounts) {
+            accountListAdapter.accounts(accounts);
+        }
+
+        @Override
+        public void add(@NonNull UiAccount account) {
+            accountListAdapter.add(account);
+        }
+
+        @Override
+        public void showAddAccountUi() {
+            navigator.showAddAccountFragment(AddAccountFragment::newInstance);
+        }
+    };
 
     @Override
     protected UiWrapper<AccountListUi, AccountListUi.Listener, ?> uiWrapper(UiWrapperFactory uiWrapperFactory, @Nullable Bundle savedState) {

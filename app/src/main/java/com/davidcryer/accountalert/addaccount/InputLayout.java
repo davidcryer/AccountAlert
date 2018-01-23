@@ -16,6 +16,8 @@ public class InputLayout extends TextInputLayout {
 
     public InputLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
+        inflate(context, R.layout.layout_input, this);
+        //TODO hint
         ButterKnife.bind(this);
     }
 }
