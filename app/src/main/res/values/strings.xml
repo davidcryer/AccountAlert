@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Account Reminder</string>
+    <string name="app_name">Account Alert</string>
 
     <string name="account_list.title">My Accounts</string>
     <string name="add_account.title">Add Account</string>
