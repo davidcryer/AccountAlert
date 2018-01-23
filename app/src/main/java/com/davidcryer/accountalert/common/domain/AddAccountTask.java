@@ -8,8 +8,6 @@ class AddAccountTask {
     }
 
     Account addAccount(final AccountSubmission submission) throws BadAccountInitialisationException {
-        final Account account = new Account(submission.title, submission.description, submission.nextNotification, submission.repeatType);
-        accountStore.add(account);
-        return account;
+        return accountStore.add(submission);
     }
 }

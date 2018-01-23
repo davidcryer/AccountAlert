@@ -1,5 +1,6 @@
 package com.davidcryer.accountalert.accountlist;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import com.davidc.uiwrapper.UiWrapper;
 import com.davidc.uiwrapper.UiWrapperFactoryFragment;
 import com.davidcryer.accountalert.R;
+import com.davidcryer.accountalert.addaccount.AddAccountFragment;
 import com.davidcryer.accountalert.common.framework.uiwrapper.UiWrapperFactory;
 
 import java.util.List;
@@ -20,8 +22,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class AccountListFragment extends UiWrapperFactoryFragment<AccountListUi, AccountListUi.Listener, UiWrapperFactory> {
-    private Unbinder butterKnifeUnbinder;
     private final AccountListAdapter accountListAdapter;
+    private Unbinder butterKnifeUnbinder;
+    private AccountListNavigator navigator;
     @BindView(R.id.accounts)
     RecyclerView accountsView;
 
@@ -31,6 +34,18 @@ public class AccountListFragment extends UiWrapperFactoryFragment<AccountListUi,
 
     public static AccountListFragment newInstance() {
         return new AccountListFragment();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        navigator = (AccountListNavigator) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        navigator = null;
     }
 
     @Nullable
@@ -73,7 +88,7 @@ public class AccountListFragment extends UiWrapperFactoryFragment<AccountListUi,
 
             @Override
             public void showAddAccountUi() {
-
+                navigator.showAddAccountFragment(AddAccountFragment::newInstance);
             }
         };
     }

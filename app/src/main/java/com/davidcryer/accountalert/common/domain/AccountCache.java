@@ -1,24 +1,42 @@
 package com.davidcryer.accountalert.common.domain;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 class AccountCache {
-    private List<UUID> accountList;
-    private Map<UUID, Account> accountMap;
+    private List<UUID> orderedAccounts = new ArrayList<>();
+    private Map<UUID, Account> accountMap = new HashMap<>();
 
-    AccountList accountList() {
-        return new AccountList(accountList, accountMap);
+    boolean hasOrderedAccounts() {
+        return orderedAccounts != null;
     }
 
-    void accountList(final List<UUID> accountList, final Map<UUID, Account> accountMap) {
-        this.accountList = accountList;
+    List<UUID> orderedAccounts() {
+        return orderedAccounts;
+    }
+
+    void orderedAccounts(final List<UUID> orderedAccounts) {
+        this.orderedAccounts = orderedAccounts;
+
+    }
+
+    boolean hasAccountMap() {
+        return accountMap != null;
+    }
+
+    Map<UUID, Account> accountMap() {
+        return accountMap;
+    }
+
+    void accountMap(final Map<UUID, Account> accountMap) {
         this.accountMap = accountMap;
     }
 
     void add(final Account account) {
-        accountList.add(account.id());
+        orderedAccounts.add(account.id());
         accountMap.put(account.id(), account);
     }
 }

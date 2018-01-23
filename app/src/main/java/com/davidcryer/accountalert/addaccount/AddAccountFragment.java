@@ -6,6 +6,8 @@ import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.Spinner;
 
 import com.davidc.uiwrapper.UiWrapper;
 import com.davidc.uiwrapper.UiWrapperFactoryFragment;
@@ -23,7 +25,13 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     @BindView(R.id.description)
     InputLayout descriptionInputLayout;
     @BindView(R.id.next_notification)
-    InputLayout nextNotificationInputLayout;
+    DatePicker nextNotificationDatePicker;
+    @BindView(R.id.repeat_type)
+    Spinner repeatTypeSpinner;
+
+    public static AddAccountFragment newInstance() {
+        return new AddAccountFragment();
+    }
 
     @Nullable
     @Override
@@ -35,6 +43,7 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     public void onViewCreated(View view, @Nullable Bundle savedState) {
         super.onViewCreated(view, savedState);
         unbinder = ButterKnife.bind(this, view);
+        nextNotificationDatePicker.setMinDate(System.currentTimeMillis() - 1000L);
     }
 
     @Override
@@ -68,8 +77,9 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
 
             @Override
             public void nextNotificationError(String error) {
-                if (getView() != null) {
-                    nextNotificationInputLayout.setError(error);
+                final View root = getView();
+                if (root != null) {
+                    Snackbar.make(root, error, Snackbar.LENGTH_LONG).show();//TODO taylor for next notification date
                 }
             }
 
