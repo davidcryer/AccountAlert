@@ -21,6 +21,7 @@ public class AccountLayout extends LinearLayout {
 
     public AccountLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        inflate(context, R.layout.list_item_account, this);
         ButterKnife.bind(this);
     }
 

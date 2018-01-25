@@ -8,6 +8,6 @@ import com.davidcryer.accountalert.R;
 class AccountLayoutInflater {
 
     AccountLayout inflateFrom(final ViewGroup group) {
-        return (AccountLayout) LayoutInflater.from(group.getContext()).inflate(R.layout.list_item_account, group, false);
+        return (AccountLayout) LayoutInflater.from(group.getContext()).inflate(R.layout.holder_account, group, false);
     }
 }
