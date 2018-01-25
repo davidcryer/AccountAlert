@@ -11,4 +11,16 @@
     <string name="add_account.next_notification">Next Notification</string>
     <string name="add_account.repeat">Repeat</string>
     <string name="add_account.submit">Submit</string>
+
+    <string-array name="repeat_types">
+        <item>Never</item>
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Fortnightly</item>
+        <item>Monthly</item>
+        <item>Quarterly</item>
+        <item>Bi-annually</item>
+        <item>Annually</item>
+        <item>Semi-annually</item>
+    </string-array>
 </resources>

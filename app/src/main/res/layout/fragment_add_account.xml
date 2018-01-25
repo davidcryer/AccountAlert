@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="8dp">
 
-    <com.davidcryer.accountalert.addaccount.InputLayout
-        android:id="@+id/title"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:hint="@string/add_account.title" /><!-- TODO hints -->
+        android:padding="8dp">
 
-    <com.davidcryer.accountalert.addaccount.InputLayout
-        android:id="@+id/description"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/title_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_account.title" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/description_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:hint="@string/add_account.description" />
+        android:padding="8dp">
 
-    <DatePicker
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/description_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_account.description" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
         android:id="@+id/next_notification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:datePickerMode="spinner" />
+        android:padding="8dp"
+        android:background="@drawable/selector_grey_on_transparent"
+        android:text="@string/add_account.next_notification" />
 
     <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/repeat_type"
@@ -37,6 +55,7 @@
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:text="@string/add_account.submit" />
 
 </LinearLayout>
