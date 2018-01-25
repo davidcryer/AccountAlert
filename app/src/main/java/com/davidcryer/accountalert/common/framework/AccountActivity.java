@@ -26,6 +26,6 @@ public class AccountActivity extends SimpleAppBarActivity implements AccountList
 
     @Override
     public void showAddAccountFragment(Provider<AddAccountFragment> provider) {
-        replace(FRAGMENT_ADD_ACCOUNT, provider::get, anims(R.anim.enter_bottom, 0), anims(R.anim.exit_bottom, 0));
+        replace(FRAGMENT_ADD_ACCOUNT, provider::get, anims(R.anim.enter_right, 0), anims(0, R.anim.exit_right));
     }
 }
