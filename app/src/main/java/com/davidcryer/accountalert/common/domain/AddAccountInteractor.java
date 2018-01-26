@@ -40,7 +40,7 @@ public class AddAccountInteractor extends Interactor {
     public interface OnErrorCallback {
         void title(String error);
         void description(String error);
-        void nextNotification(String error);
+        void reminder(String error);
         void unknown(String error);
     }
 }

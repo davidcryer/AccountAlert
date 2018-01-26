@@ -7,18 +7,18 @@ public class Account {
     private final UUID id;
     private final String title;
     private final String description;
-    private final Date nextNotification;
+    private final Date reminder;
     private final RepeatType repeatType;
 
-    Account(String title, String description, Date nextNotification, RepeatType repeatType) {
-        this(UUID.randomUUID(), title, description, nextNotification, repeatType);
+    Account(String title, String description, Date reminder, RepeatType repeatType) {
+        this(UUID.randomUUID(), title, description, reminder, repeatType);
     }
 
-    Account(UUID id, String title, String description, Date nextNotification, RepeatType repeatType) {//TODO validate
+    Account(UUID id, String title, String description, Date reminder, RepeatType repeatType) {//TODO validate
         this.id = id;
         this.title = title;
         this.description = description;
-        this.nextNotification = nextNotification;
+        this.reminder = reminder;
         this.repeatType = repeatType;
     }
 
@@ -34,8 +34,8 @@ public class Account {
         return description;
     }
 
-    public Date nextNotification() {
-        return nextNotification;
+    public Date reminder() {
+        return reminder;
     }
 
     public RepeatType repeatType() {

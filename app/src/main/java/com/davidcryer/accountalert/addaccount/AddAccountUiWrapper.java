@@ -54,8 +54,8 @@ public class AddAccountUiWrapper extends UiWrapper<AddAccountUi, AddAccountUi.Li
         }
 
         @Override
-        public void nextNotification(String error) {
-            uiModel().nextNotification(ui(), error);
+        public void reminder(String error) {
+            uiModel().reminder(ui(), error);
         }
 
         @Override

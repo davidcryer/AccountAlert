@@ -5,13 +5,13 @@ import java.util.Date;
 public class AccountSubmission {
     final String title;
     final String description;
-    final Date nextNotification;
+    final Date reminder;
     final RepeatType repeatType;
 
-    public AccountSubmission(String title, String description, Date nextNotification, RepeatType repeatType) {
+    public AccountSubmission(String title, String description, Date reminder, RepeatType repeatType) {
         this.title = title;
         this.description = description;
-        this.nextNotification = nextNotification;
+        this.reminder = reminder;
         this.repeatType = repeatType;
     }
 }

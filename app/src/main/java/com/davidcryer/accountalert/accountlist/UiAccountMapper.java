@@ -15,11 +15,11 @@ class UiAccountMapper {
     }
 
     private static UiAccount from(final Account account) {
-        return new UiAccount(account.id(), account.title(), account.description(), from(account.nextNotification()), from(account.repeatType()));
+        return new UiAccount(account.id(), account.title(), account.description(), from(account.reminder()), from(account.repeatType()));
     }
 
-    private static String from(final Date nextNotification) {
-        return nextNotification.toString();
+    private static String from(final Date reminder) {
+        return reminder.toString();
     }
 
     private static String from(final RepeatType repeatType) {

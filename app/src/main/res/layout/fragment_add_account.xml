@@ -34,12 +34,12 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/next_notification"
+        android:id="@+id/reminder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:background="@drawable/selector_grey_on_transparent"
-        android:text="@string/add_account.next_notification" />
+        android:text="@string/add_account.reminder" />
 
     <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/repeat_type"

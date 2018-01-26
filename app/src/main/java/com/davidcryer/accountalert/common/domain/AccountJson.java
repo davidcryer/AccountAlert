@@ -5,13 +5,13 @@ import java.util.Date;
 public class AccountJson {
     private final String title;
     private final String description;
-    private final Date nextNotification;
+    private final Date reminder;
     private final RepeatType repeatType;
 
-    public AccountJson(String title, String description, Date nextNotification, RepeatType repeatType) {
+    public AccountJson(String title, String description, Date reminder, RepeatType repeatType) {
         this.title = title;
         this.description = description;
-        this.nextNotification = nextNotification;
+        this.reminder = reminder;
         this.repeatType = repeatType;
     }
 
@@ -23,8 +23,8 @@ public class AccountJson {
         return description;
     }
 
-    public Date getNextNotification() {
-        return nextNotification;
+    public Date getReminder() {
+        return reminder;
     }
 
     public RepeatType getRepeatType() {

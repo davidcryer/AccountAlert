@@ -6,14 +6,14 @@ import android.support.annotation.NonNull;
 public class AddAccountUiModelImpl implements AddAccountUiModel {
     private String titleError;
     private String descriptionError;
-    private String nextNotificationError;
+    private String reminderError;
     private String genericError;
     private boolean dismiss;
 
     public AddAccountUiModelImpl() {
         this.titleError = "";
         this.descriptionError = "";
-        this.nextNotificationError = "";
+        this.reminderError = "";
         this.genericError = "";
         this.dismiss = false;
     }
@@ -43,11 +43,11 @@ public class AddAccountUiModelImpl implements AddAccountUiModel {
     }
 
     @Override
-    public void nextNotification(AddAccountUi ui, String error) {
+    public void reminder(AddAccountUi ui, String error) {
         if (ui != null) {
-            ui.nextNotificationError(error);
+            ui.reminderError(error);
         }
-        this.nextNotificationError = error;
+        this.reminderError = error;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class AddAccountUiModelImpl implements AddAccountUiModel {
     public void onto(@NonNull AddAccountUi ui) {
         ui.titleError(titleError);
         ui.descriptionError(descriptionError);
-        ui.nextNotificationError(nextNotificationError);
+        ui.reminderError(reminderError);
         ui.genericError(genericError);
         if (dismiss) {
             ui.dismiss();
@@ -78,13 +78,13 @@ public class AddAccountUiModelImpl implements AddAccountUiModel {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.titleError);
         dest.writeString(this.descriptionError);
-        dest.writeString(this.nextNotificationError);
+        dest.writeString(this.reminderError);
     }
 
     private AddAccountUiModelImpl(Parcel in) {
         this.titleError = in.readString();
         this.descriptionError = in.readString();
-        this.nextNotificationError = in.readString();
+        this.reminderError = in.readString();
     }
 
     public static final Creator<AddAccountUiModelImpl> CREATOR = new Creator<AddAccountUiModelImpl>() {

@@ -50,7 +50,7 @@ public class SharedPreferencesAccountDb implements AccountDb {
     }
 
     private Account from(final UUID id, final AccountJson json) {
-        return new Account(id, json.getTitle(), json.getDescription(), json.getNextNotification(), json.getRepeatType());
+        return new Account(id, json.getTitle(), json.getDescription(), json.getReminder(), json.getRepeatType());
     }
 
     private UUID parseId(final String id) {
@@ -60,7 +60,7 @@ public class SharedPreferencesAccountDb implements AccountDb {
     @Override
     public Account add(AccountSubmission submission) throws BadAccountInitialisationException {
         //TODO handle account creation error cases
-        final Account account = update(new Account(submission.title, submission.description, submission.nextNotification, submission.repeatType));
+        final Account account = update(new Account(submission.title, submission.description, submission.reminder, submission.repeatType));
         final String id = account.id().toString();
         accountOrders.edit().putString(getLastAccountId(), id).putString(id, null).apply();
         return account;

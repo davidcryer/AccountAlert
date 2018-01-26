@@ -8,7 +8,7 @@
 
     <string name="add_account.title">Title</string>
     <string name="add_account.description">Description</string>
-    <string name="add_account.next_notification">Next Notification</string>
+    <string name="add_account.reminder">Next Notification</string>
     <string name="add_account.repeat">Repeat</string>
     <string name="add_account.submit">Submit</string>
 

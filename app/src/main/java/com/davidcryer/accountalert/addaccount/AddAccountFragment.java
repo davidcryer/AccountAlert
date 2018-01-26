@@ -48,8 +48,8 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     EditText descriptionEdit;
     @BindView(R.id.repeat_type)
     Spinner repeatTypeSpinner;
-    @BindView(R.id.next_notification)
-    TextView nextNotificationText;
+    @BindView(R.id.reminder)
+    TextView reminderText;
 
     public static AddAccountFragment newInstance() {
         return new AddAccountFragment();
@@ -103,8 +103,8 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
         getActivity().setTitle(R.string.screen_title_add_account);
     }
 
-    @OnClick(R.id.next_notification)
-    void openNextNotificationDialog() {
+    @OnClick(R.id.reminder)
+    void openReminderDialog() {
         final Context context = getContext();
         if (context != null) {
             final Calendar c = Calendar.getInstance();
@@ -122,7 +122,7 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     private void onSelect(final Date date) {
         selectedReminder = date;
         final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
-        nextNotificationText.setText(dateFormat.format(selectedReminder));
+        reminderText.setText(dateFormat.format(selectedReminder));
     }
 
     @OnClick(R.id.submit)
@@ -152,7 +152,7 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
             }
 
             @Override
-            public void nextNotificationError(String error) {
+            public void reminderError(String error) {
                 genericError(error);
             }
 
