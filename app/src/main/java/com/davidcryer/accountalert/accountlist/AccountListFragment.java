@@ -25,15 +25,11 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class AccountListFragment extends UiWrapperFactoryFragment<AccountListUi, AccountListUi.Listener, UiWrapperFactory> {
-    private final AccountListAdapter accountListAdapter;
+    private final AccountListAdapter accountListAdapter = new AccountListAdapter(new AccountLayoutInflater());
     private Unbinder butterKnifeUnbinder;
     private AccountListNavigator navigator;
     @BindView(R.id.accounts)
     RecyclerView accountsView;
-
-    {
-        accountListAdapter = new AccountListAdapter(new AccountLayoutInflater());
-    }
 
     public static AccountListFragment newInstance() {
         return new AccountListFragment();

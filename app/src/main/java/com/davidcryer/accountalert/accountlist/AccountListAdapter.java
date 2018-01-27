@@ -11,11 +11,7 @@ import java.util.List;
 
 class AccountListAdapter extends RecyclerView.Adapter<UiAccount.AccountViewHolder> {
     private final AccountLayoutInflater layoutInflater;
-    private List<UiAccount> accounts;
-
-    {
-        accounts = new LinkedList<>();
-    }
+    private List<UiAccount> accounts = new LinkedList<>();;
 
     AccountListAdapter(AccountLayoutInflater layoutInflater) {
         this.layoutInflater = layoutInflater;
