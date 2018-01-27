@@ -42,7 +42,7 @@ public class AccountStore {
         return accountMap;
     }
 
-    Account add(final AccountSubmission submission) {
+    Account add(final AccountSubmission submission) throws BadAccountInitialisationException {
         final Account account = db.add(submission);
         cache.add(account);
         return account;
