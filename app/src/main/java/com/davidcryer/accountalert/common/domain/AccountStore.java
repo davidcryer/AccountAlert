@@ -6,11 +6,7 @@ import java.util.UUID;
 
 public class AccountStore {
     private final AccountDb db;
-    private final AccountCache cache;
-
-    {
-        cache = new AccountCache();
-    }
+    private final AccountCache cache = new AccountCache();
 
     public AccountStore(AccountDb db) {
         this.db = db;
