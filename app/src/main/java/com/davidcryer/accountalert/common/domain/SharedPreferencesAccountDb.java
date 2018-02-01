@@ -60,7 +60,6 @@ public class SharedPreferencesAccountDb implements AccountDb {
 
     @Override
     public Account add(AccountSubmission submission) throws BadAccountInitialisationException {
-        //TODO handle account creation error cases
         final Account account = update(new Account(submission.title, submission.description, submission.reminder, submission.repeatType));
         final String id = account.id().toString();
         accountOrders.edit().putString(getLastAccountId(), id).putString(id, null).apply();
