@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import java.util.List;
 
-public class ListHelper {
+public class Lists {
 
     public static @NonNull <T> List<T> from(@Nullable final List<T> l, final EmptyListProvider<T> emptyListProvider, final PopulatedListProvider<T> populatedListProvider) {
         return l == null ? emptyListProvider.get() : populatedListProvider.from(l);

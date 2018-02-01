@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 
+import com.davidcryer.accountalert.common.domain.argchecking.BadAccountInitialisationException;
 import com.google.gson.Gson;
 
 import java.util.HashMap;

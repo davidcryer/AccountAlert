@@ -1,5 +1,8 @@
 package com.davidcryer.accountalert.common.domain;
 
+import com.davidcryer.accountalert.common.domain.argchecking.AccountInitialisationChecker;
+import com.davidcryer.accountalert.common.domain.argchecking.BadAccountInitialisationException;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,11 +13,12 @@ public class Account {
     private final Date reminder;
     private final RepeatType repeatType;
 
-    Account(String title, String description, Date reminder, RepeatType repeatType) {
+    Account(String title, String description, Date reminder, RepeatType repeatType) throws BadAccountInitialisationException {
         this(UUID.randomUUID(), title, description, reminder, repeatType);
     }
 
-    Account(UUID id, String title, String description, Date reminder, RepeatType repeatType) {//TODO validate
+    Account(UUID id, String title, String description, Date reminder, RepeatType repeatType) throws BadAccountInitialisationException {
+        AccountInitialisationChecker.check(id, title, reminder);
         this.id = id;
         this.title = title;
         this.description = description;

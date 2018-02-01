@@ -2,6 +2,7 @@ package com.davidcryer.accountalert.common.domain;
 
 import com.davidc.interactor.Interactor;
 import com.davidc.interactor.TaskScheduler;
+import com.davidcryer.accountalert.common.domain.argchecking.BadAccountInitialisationException;
 
 public class AddAccountInteractor extends Interactor {
     private final AddAccountTask addAccountTask;

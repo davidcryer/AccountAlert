@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.davidcryer.accountalert.common.ListHelper;
+import com.davidcryer.accountalert.common.Lists;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +18,7 @@ class AccountListAdapter extends RecyclerView.Adapter<UiAccount.AccountViewHolde
     }
 
     void accounts(@NonNull final List<UiAccount> accounts) {
-        this.accounts = ListHelper.from(accounts, LinkedList::new, LinkedList::new);
+        this.accounts = Lists.from(accounts, LinkedList::new, LinkedList::new);
     }
 
     void add(@NonNull final UiAccount account) {

@@ -1,5 +1,7 @@
 package com.davidcryer.accountalert.common.domain;
 
+import com.davidcryer.accountalert.common.domain.argchecking.BadAccountInitialisationException;
+
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;

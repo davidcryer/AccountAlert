@@ -1,12 +1,14 @@
 package com.davidcryer.accountalert.common.domain;
 
-public enum RepeatType {
-    NEVER, DAILY, WEEKLY, FORTNIGHTLY, MONTHLY, QUARTERLY, BI_ANNUALLY, ANNUALLY, SEMI_ANNUALLY;
+import android.support.annotation.Nullable;
 
-    public static RepeatType from(String type) {
+public enum RepeatType {
+    DAILY, WEEKLY, FORTNIGHTLY, MONTHLY, QUARTERLY, BI_ANNUALLY, ANNUALLY, SEMI_ANNUALLY;
+
+    public static @Nullable RepeatType from(String type) {
         switch (type) {
             case "Never": {
-                return NEVER;
+                return null;
             }
             case "Daily": {
                 return DAILY;
