@@ -109,7 +109,7 @@ public class AccountListFragment extends UiWrapperFactoryFragment<AccountListUi,
 
         @Override
         public void showAddAccountUi() {
-            navigator.showAddAccountFragment(AddAccountFragment::newInstance);
+            navigator.showAddAccountFragment(AddAccountFragment::new);
         }
     };
 

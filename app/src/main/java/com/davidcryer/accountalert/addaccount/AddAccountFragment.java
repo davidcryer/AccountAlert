@@ -54,10 +54,6 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     @BindView(R.id.reminder)
     TextView reminderText;
 
-    public static AddAccountFragment newInstance() {
-        return new AddAccountFragment();
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
