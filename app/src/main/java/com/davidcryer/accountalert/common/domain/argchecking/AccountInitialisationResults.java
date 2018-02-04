@@ -14,20 +14,26 @@ public class AccountInitialisationResults extends ArgResults {
         this.reminder = reminder;
     }
 
-    public Result id() {
-        return id;
-    }
-
-    public Result title() {
-        return title;
-    }
-
-    public Result reminder() {
-        return reminder;
-    }
-
     @Override
     protected Result[] asArray() {
-        return new Result[] {id(), title(), reminder()};
+        return new Result[] {id, title, reminder};
+    }
+
+    public void forErrors(final ErrorCallback errorCallback) {
+        if (!id.passed()) {
+            errorCallback.unknown(id.note());
+        }
+        if (!title.passed()) {
+            errorCallback.title(title.note());
+        }
+        if (!reminder.passed()) {
+            errorCallback.reminder(reminder.note());
+        }
+    }
+
+    public interface ErrorCallback {
+        void title(String error);
+        void reminder(String error);
+        void unknown(String error);
     }
 }

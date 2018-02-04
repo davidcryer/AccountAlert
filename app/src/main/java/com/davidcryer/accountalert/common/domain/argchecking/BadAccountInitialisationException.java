@@ -5,7 +5,7 @@ import com.davidcryer.argrules.multiarg.ArgException;
 public class BadAccountInitialisationException extends ArgException {
     private final AccountInitialisationResults results;
 
-    public BadAccountInitialisationException(AccountInitialisationResults results) {
+    BadAccountInitialisationException(AccountInitialisationResults results) {
         super(results);
         this.results = results;
     }

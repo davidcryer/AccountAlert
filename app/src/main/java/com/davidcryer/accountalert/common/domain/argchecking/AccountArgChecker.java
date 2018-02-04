@@ -14,11 +14,11 @@ import static com.davidcryer.argrules.multiarg.ImmediateResult.forCheck;
 import static com.davidcryer.argrules.multiarg.ResultChain.chain;
 
 abstract class AccountArgChecker<R extends ArgResults, E extends ArgException> extends ArgChecker<R, E> {
-    private final static String ERROR_ID_NULL = "id cannot be null";
-    private final static String ERROR_TITLE_NULL = "title cannot be null";
-    private final static String ERROR_TITLE_EMPTY = "title cannot be empty";
-    private final static String ERROR_REMINDER_NULL = "reminder cannot be null";
-    private final static String ERROR_REMINDER_IN_PAST = "reminder must be tomorrow or later";
+    private final static String ERROR_ID_NULL = "Id cannot be null";
+    private final static String ERROR_TITLE_NULL = "Title cannot be null";
+    private final static String ERROR_TITLE_EMPTY = "Title cannot be empty";
+    private final static String ERROR_REMINDER_NULL = "Reminder cannot be null";
+    private final static String ERROR_REMINDER_IN_PAST = "Reminder must be tomorrow or later";
 
     Result idResult(final UUID id) {
         return forCheck(id != null, ERROR_ID_NULL);

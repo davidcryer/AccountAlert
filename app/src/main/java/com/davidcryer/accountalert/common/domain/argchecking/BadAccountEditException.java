@@ -5,7 +5,7 @@ import com.davidcryer.argrules.multiarg.ArgException;
 public class BadAccountEditException extends ArgException {
     private final AccountEditResults results;
 
-    public BadAccountEditException(AccountEditResults results) {
+    BadAccountEditException(AccountEditResults results) {
         super(results);
         this.results = results;
     }

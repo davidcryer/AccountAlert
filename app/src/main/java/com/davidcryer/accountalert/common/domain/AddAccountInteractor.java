@@ -2,6 +2,7 @@ package com.davidcryer.accountalert.common.domain;
 
 import com.davidc.interactor.Interactor;
 import com.davidc.interactor.TaskScheduler;
+import com.davidcryer.accountalert.common.domain.argchecking.AccountInitialisationResults;
 import com.davidcryer.accountalert.common.domain.argchecking.BadAccountInitialisationException;
 
 public class AddAccountInteractor extends Interactor {
@@ -20,7 +21,7 @@ public class AddAccountInteractor extends Interactor {
         try {
             dispatch(addAccountTask.addAccount(submission), onSuccessCallback);
         } catch (BadAccountInitialisationException e) {
-            dispatch(e, onErrorCallback);
+            dispatch(e.results(), onErrorCallback);
         }
     }
 
@@ -28,10 +29,27 @@ public class AddAccountInteractor extends Interactor {
         executeOnCallbackThread(() -> onSuccessCallback.account(account));
     }
 
-    private void dispatch(final BadAccountInitialisationException e, final OnErrorCallback onErrorCallback) {
-        executeOnCallbackThread(() -> {
-            //TODO call specific error callbacks (may be more than one!
-        });
+    private void dispatch(final AccountInitialisationResults results, final OnErrorCallback onErrorCallback) {
+        executeOnCallbackThread(() -> results.forErrors(errorCallback(onErrorCallback)));
+    }
+
+    private AccountInitialisationResults.ErrorCallback errorCallback(final OnErrorCallback onErrorCallback) {
+        return new AccountInitialisationResults.ErrorCallback() {
+            @Override
+            public void title(String error) {
+                onErrorCallback.title(error);
+            }
+
+            @Override
+            public void reminder(String error) {
+                onErrorCallback.reminder(error);
+            }
+
+            @Override
+            public void unknown(String error) {
+                onErrorCallback.unknown(error);
+            }
+        };
     }
 
     public interface OnSuccessCallback {
@@ -40,7 +58,6 @@ public class AddAccountInteractor extends Interactor {
 
     public interface OnErrorCallback {
         void title(String error);
-        void description(String error);
         void reminder(String error);
         void unknown(String error);
     }

@@ -1,5 +1,6 @@
 package com.davidcryer.accountalert.addaccount;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.widget.TextView;
 import com.davidc.uiwrapper.UiWrapper;
 import com.davidc.uiwrapper.UiWrapperFactoryFragment;
 import com.davidcryer.accountalert.R;
+import com.davidcryer.accountalert.common.Dates;
+import com.davidcryer.accountalert.common.Strings;
 import com.davidcryer.accountalert.common.domain.AccountSubmission;
 import com.davidcryer.accountalert.common.domain.RepeatType;
 import com.davidcryer.accountalert.common.framework.uiwrapper.UiWrapperFactory;
@@ -111,10 +114,8 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
             datePickerDialog = new DatePickerDialog(context, (datePicker, year, month, dayOfMonth) -> {
                 onSelect(new GregorianCalendar(year, month, dayOfMonth).getTime());
             }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
-            datePickerDialog.setOnDismissListener(dialog -> {
-                datePickerDialog = null;
-            });
+            datePickerDialog.getDatePicker().setMinDate(Dates.midnightTomorrow().getTime());
+            datePickerDialog.setOnDismissListener(dialog -> datePickerDialog = null);
             datePickerDialog.show();
         }
     }
@@ -145,20 +146,13 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
             }
 
             @Override
-            public void descriptionError(String error) {
-                if (getView() != null) {
-                    descriptionInputLayout.setError(error);
-                }
-            }
-
-            @Override
             public void reminderError(String error) {
                 genericError(error);
             }
 
             @Override
             public void genericError(String error) {
-                if (error.isEmpty()) {
+                if (Strings.isNullOrEmpty(error)) {
                     return;
                 }
                 final View root = getView();
@@ -169,7 +163,10 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
 
             @Override
             public void dismiss() {
-                getActivity().onBackPressed();//TODO check if correct
+                final Activity activity = getActivity();
+                if (activity != null) {
+                    getActivity().onBackPressed();//TODO check if correct
+                }
             }
         };
     }

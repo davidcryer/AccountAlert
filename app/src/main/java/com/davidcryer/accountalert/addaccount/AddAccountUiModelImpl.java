@@ -5,14 +5,12 @@ import android.support.annotation.NonNull;
 
 public class AddAccountUiModelImpl implements AddAccountUiModel {
     private String titleError;
-    private String descriptionError;
     private String reminderError;
     private String genericError;
     private boolean dismiss;
 
     public AddAccountUiModelImpl() {
         this.titleError = "";
-        this.descriptionError = "";
         this.reminderError = "";
         this.genericError = "";
         this.dismiss = false;
@@ -35,14 +33,6 @@ public class AddAccountUiModelImpl implements AddAccountUiModel {
     }
 
     @Override
-    public void description(AddAccountUi ui, String error) {
-        if (ui != null) {
-            ui.descriptionError(error);
-        }
-        this.descriptionError = error;
-    }
-
-    @Override
     public void reminder(AddAccountUi ui, String error) {
         if (ui != null) {
             ui.reminderError(error);
@@ -61,7 +51,6 @@ public class AddAccountUiModelImpl implements AddAccountUiModel {
     @Override
     public void onto(@NonNull AddAccountUi ui) {
         ui.titleError(titleError);
-        ui.descriptionError(descriptionError);
         ui.reminderError(reminderError);
         ui.genericError(genericError);
         if (dismiss) {
@@ -77,13 +66,11 @@ public class AddAccountUiModelImpl implements AddAccountUiModel {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.titleError);
-        dest.writeString(this.descriptionError);
         dest.writeString(this.reminderError);
     }
 
     private AddAccountUiModelImpl(Parcel in) {
         this.titleError = in.readString();
-        this.descriptionError = in.readString();
         this.reminderError = in.readString();
     }
 
