@@ -14,17 +14,11 @@ public class AccountListUiWrapper extends UiWrapper<AccountListUi, AccountListUi
         this.getAccountsInteractor = getAccountsInteractor;
     }
 
-    public static AccountListUiWrapper newInstance(
-            @NonNull final AccountListUiModel uiModel,
-            final GetAccountsInteractor getAccountsInteractor
-    ) {
+    public static AccountListUiWrapper newInstance(@NonNull final AccountListUiModel uiModel, final GetAccountsInteractor getAccountsInteractor) {
         return new AccountListUiWrapper(uiModel, getAccountsInteractor);
     }
 
-    public static AccountListUiWrapper savedInstance(
-            @NonNull final Bundle savedState,
-            final GetAccountsInteractor getAccountsInteractor
-    ) {
+    public static AccountListUiWrapper savedInstance(@NonNull final Bundle savedState, final GetAccountsInteractor getAccountsInteractor) {
         final AccountListUiModel uiModel = savedUiModel(savedState);
         return uiModel == null ? null : newInstance(uiModel, getAccountsInteractor);
     }
