@@ -1,17 +1,18 @@
 package com.davidcryer.accountalert.common.domain.argchecking;
 
+import com.davidcryer.argrules.multiarg.Result;
+
 import java.util.Date;
-import java.util.UUID;
 
 public class AccountInitialisationChecker extends AccountArgChecker<AccountInitialisationResults, BadAccountInitialisationException> {
     private final AccountInitialisationResults results;
 
-    private AccountInitialisationChecker(final UUID id, final String title, final Date reminder) {
-        results = new AccountInitialisationResults(idResult(id), titleResult(title), reminderResult(reminder));
+    private AccountInitialisationChecker(final String title, final Result reminderResult) {
+        results = new AccountInitialisationResults(titleResult(title), reminderResult);
     }
 
-    public static void check(final UUID id, final String title, final Date reminder) throws BadAccountInitialisationException {
-        new AccountInitialisationChecker(id, title, reminder).check();
+    public static void check(final String title, final Date reminder) throws BadAccountInitialisationException {
+        new AccountInitialisationChecker(title, reminderResult(reminder)).check();
     }
 
     @Override

@@ -19,10 +19,12 @@ class AccountListAdapter extends RecyclerView.Adapter<UiAccount.AccountViewHolde
 
     void accounts(@NonNull final List<UiAccount> accounts) {
         this.accounts = Lists.from(accounts, LinkedList::new, LinkedList::new);
+        notifyDataSetChanged();
     }
 
     void add(@NonNull final UiAccount account) {
-        this.accounts.add(account);
+        accounts.add(account);
+        notifyItemInserted(accounts.size() - 1);
     }
 
     @Override

@@ -4,25 +4,20 @@ import com.davidcryer.argrules.multiarg.ArgResults;
 import com.davidcryer.argrules.multiarg.Result;
 
 public class AccountInitialisationResults extends ArgResults {
-    private final Result id;
     private final Result title;
     private final Result reminder;
 
-    AccountInitialisationResults(Result id, Result title, Result reminder) {
-        this.id = id;
+    AccountInitialisationResults(Result title, Result reminder) {
         this.title = title;
         this.reminder = reminder;
     }
 
     @Override
     protected Result[] asArray() {
-        return new Result[] {id, title, reminder};
+        return new Result[] {title, reminder};
     }
 
     public void forErrors(final ErrorCallback errorCallback) {
-        if (!id.passed()) {
-            errorCallback.unknown(id.note());
-        }
         if (!title.passed()) {
             errorCallback.title(title.note());
         }

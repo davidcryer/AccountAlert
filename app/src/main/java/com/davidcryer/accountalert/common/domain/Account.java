@@ -13,17 +13,21 @@ public class Account {
     private final Date reminder;
     private final RepeatType repeatType;
 
-    Account(String title, String description, Date reminder, RepeatType repeatType) throws BadAccountInitialisationException {
-        this(UUID.randomUUID(), title, description, reminder, repeatType);
-    }
-
-    Account(UUID id, String title, String description, Date reminder, RepeatType repeatType) throws BadAccountInitialisationException {
-        AccountInitialisationChecker.check(id, title, reminder);
+    private Account(UUID id, String title, String description, Date reminder, RepeatType repeatType) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.reminder = reminder;
         this.repeatType = repeatType;
+    }
+
+    static Account newInstance(String title, String description, Date reminder, RepeatType repeatType) throws BadAccountInitialisationException {
+        AccountInitialisationChecker.check(title, reminder);
+        return new Account(UUID.randomUUID(), title, description, reminder, repeatType);
+    }
+
+    static Account existingInstance(UUID id, String title, String description, Date reminder, RepeatType repeatType) {
+        return new Account(id, title, description, reminder, repeatType);
     }
 
     public UUID id() {

@@ -1,14 +1,12 @@
 package com.davidcryer.accountalert.common.domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 class AccountCache {
-    private List<UUID> orderedAccounts = new ArrayList<>();
-    private Map<UUID, Account> accountMap = new HashMap<>();
+    private List<UUID> orderedAccounts;
+    private Map<UUID, Account> accountMap;
 
     boolean hasOrderedAccounts() {
         return orderedAccounts != null;
