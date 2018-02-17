@@ -12,6 +12,11 @@
     <string name="add_account.repeat">Repeat</string>
     <string name="add_account.submit">Submit</string>
 
+    <string name="notification.expiry.title">Account expiring</string>
+    <string name="notification.expiry.content.format">Your account %1$s has expired</string>
+    <string name="notification.reminder.title">Account expiry reminder</string>
+    <string name="notification.reminder.content.format">Your account %1$s is due to expire on %2$s</string>
+
     <string-array name="repeat_types">
         <item>Never</item>
         <item>Daily</item>

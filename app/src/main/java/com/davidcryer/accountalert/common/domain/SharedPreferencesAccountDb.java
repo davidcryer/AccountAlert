@@ -19,11 +19,13 @@ public class SharedPreferencesAccountDb implements AccountDb {
     private final SharedPreferences accounts;
     private final SharedPreferences accountOrders;
     private final Gson gson;
+    private final AccountFactory accountFactory;
 
-    public SharedPreferencesAccountDb(final Context context, final Gson gson) {
+    public SharedPreferencesAccountDb(final Context context, final Gson gson, final AccountFactory accountFactory) {
         accounts = context.getSharedPreferences(PREFS_KEY_ACCOUNTS, Context.MODE_PRIVATE);
         accountOrders = context.getSharedPreferences(PREFS_KEY_ORDERS, Context.MODE_PRIVATE);
         this.gson = gson;
+        this.accountFactory = accountFactory;
     }
 
     @Override
@@ -51,7 +53,7 @@ public class SharedPreferencesAccountDb implements AccountDb {
     }
 
     private Account from(final UUID id, final AccountJson json) {
-        return Account.existingInstance(id, json.getTitle(), json.getDescription(), json.getReminder(), json.getRepeatType());
+        return accountFactory.from(id, json);
     }
 
     private UUID parseId(final String id) {
@@ -60,7 +62,7 @@ public class SharedPreferencesAccountDb implements AccountDb {
 
     @Override
     public Account add(AccountSubmission submission) throws BadAccountInitialisationException {
-        final Account account = update(Account.newInstance(submission.title, submission.description, submission.reminder, submission.repeatType));
+        final Account account = update(accountFactory.from(submission));
         final String id = account.id().toString();
         accountOrders.edit().putString(getLastAccountId(), id).putString(id, null).apply();
         return account;

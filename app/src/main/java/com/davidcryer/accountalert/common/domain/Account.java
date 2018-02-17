@@ -21,12 +21,12 @@ public class Account {
         this.repeatType = repeatType;
     }
 
-    static Account newInstance(String title, String description, Date reminder, RepeatType repeatType) throws BadAccountInitialisationException {
+    static Account create(String title, String description, Date reminder, RepeatType repeatType) throws BadAccountInitialisationException {
         AccountInitialisationChecker.check(title, reminder);
         return new Account(UUID.randomUUID(), title, description, reminder, repeatType);
     }
 
-    static Account existingInstance(UUID id, String title, String description, Date reminder, RepeatType repeatType) {
+    static Account inflate(UUID id, String title, String description, Date reminder, RepeatType repeatType) {
         return new Account(id, title, description, reminder, repeatType);
     }
 

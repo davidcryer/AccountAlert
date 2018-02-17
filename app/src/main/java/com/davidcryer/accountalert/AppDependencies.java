@@ -6,12 +6,16 @@ import android.os.Looper;
 import com.davidc.interactor.TaskScheduler;
 import com.davidc.interactor.ThreadPoolExecutorAndHandlerTaskScheduler;
 import com.davidcryer.accountalert.common.domain.AccountDb;
+import com.davidcryer.accountalert.common.domain.AccountFactory;
 import com.davidcryer.accountalert.common.domain.AccountStore;
 import com.davidcryer.accountalert.common.domain.AddAccountInteractor;
 import com.davidcryer.accountalert.common.domain.AddAccountTask;
 import com.davidcryer.accountalert.common.domain.GetAccountsInteractor;
 import com.davidcryer.accountalert.common.domain.GetAccountsTask;
 import com.davidcryer.accountalert.common.domain.SharedPreferencesAccountDb;
+import com.davidcryer.accountalert.common.domain.reminder.AlarmIntentFactory;
+import com.davidcryer.accountalert.common.domain.reminder.AlarmPendingIntentFactory;
+import com.davidcryer.accountalert.common.domain.reminder.AlarmService;
 import com.davidcryer.accountalert.common.framework.uiwrapper.UiWrapperFactory;
 import com.google.gson.Gson;
 
@@ -25,7 +29,7 @@ class AppDependencies {
     static UiWrapperFactory uiWrapperFactory(final Context context) {
         final TaskScheduler taskScheduler = taskScheduler();
         final AccountStore accountStore = accountStore(context);
-        return new UiWrapperFactory(getAccountsInteractor(taskScheduler, accountStore), addAccountInteractor(taskScheduler, accountStore));
+        return new UiWrapperFactory(getAccountsInteractor(taskScheduler, accountStore), addAccountInteractor(taskScheduler, addAccountTask(alarmService(context), accountStore)));
     }
 
     private static GetAccountsInteractor getAccountsInteractor(final TaskScheduler taskScheduler, final AccountStore accountStore) {
@@ -36,16 +40,28 @@ class AppDependencies {
         return new GetAccountsTask(accountStore);
     }
 
-    private static AddAccountInteractor addAccountInteractor(final TaskScheduler taskScheduler, final AccountStore accountStore) {
-        return new AddAccountInteractor(taskScheduler, addAccountTask(accountStore));
+    private static AddAccountInteractor addAccountInteractor(final TaskScheduler taskScheduler, final AddAccountTask addAccountTask) {
+        return new AddAccountInteractor(taskScheduler, addAccountTask);
     }
 
     private static TaskScheduler taskScheduler() {
         return new ThreadPoolExecutorAndHandlerTaskScheduler(new ThreadPoolExecutor(2, 3, 2, TimeUnit.SECONDS, new LinkedBlockingDeque<>()), Looper.getMainLooper());
     }
 
-    private static AddAccountTask addAccountTask(final AccountStore accountStore) {
-        return new AddAccountTask(accountStore);
+    private static AddAccountTask addAccountTask(final AlarmService alarmService, final AccountStore accountStore) {
+        return new AddAccountTask(alarmService, accountStore);
+    }
+
+    private static AlarmService alarmService(final Context context) {
+        return new AlarmService(context, alarmPendingIntentFactory(context));
+    }
+
+    private static AlarmPendingIntentFactory alarmPendingIntentFactory(final Context context) {
+        return new AlarmPendingIntentFactory(context, alarmIntentFactory());
+    }
+
+    private static AlarmIntentFactory alarmIntentFactory() {
+        return new AlarmIntentFactory();
     }
 
     private static AccountStore accountStore(final Context context) {
@@ -53,7 +69,11 @@ class AppDependencies {
     }
 
     private static AccountDb accountDb(final Context context) {
-        return new SharedPreferencesAccountDb(context, gson());
+        return new SharedPreferencesAccountDb(context, gson(), accountFactory());
+    }
+
+    private static AccountFactory accountFactory() {
+        return new AccountFactory();
     }
 
     private static Gson gson() {
