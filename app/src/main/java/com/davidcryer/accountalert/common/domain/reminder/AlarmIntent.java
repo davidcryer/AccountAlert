@@ -6,7 +6,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 
@@ -43,7 +42,7 @@ abstract class AlarmIntent {
         return new Intent(context, ReminderReceiver.class).setAction(action).putExtra(ARG_TITLE, title);
     }
 
-    public void sendNotification() {
+    void sendNotification() {
         final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, AccountActivity.forNotification(context, id), 0);
         final Notification notification = new NotificationCompat.Builder(context, id)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
