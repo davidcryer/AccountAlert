@@ -19,12 +19,12 @@ class UiAccountMapper {
     }
 
     private static UiAccount from(final Account account) {
-        return new UiAccount(account.id(), account.title(), account.description(), from(account.reminder()), from(account.repeatType()));
+        return new UiAccount(account.id(), account.title(), account.description(), from(account.expiry()), from(account.repeatType()));
     }
 
-    private static String from(final Date reminder) {
+    private static String from(final Date expiry) {
         final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
-        return dateFormat.format(reminder);
+        return dateFormat.format(expiry);
     }
 
     private static String from(@Nullable final RepeatType repeatType) {

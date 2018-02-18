@@ -14,8 +14,8 @@ import static com.davidcryer.argrules.multiarg.ResultChain.chain;
 abstract class AccountArgChecker<R extends ArgResults, E extends ArgException> extends ArgChecker<R, E> {
     private final static String ERROR_TITLE_NULL = "Title cannot be null";
     private final static String ERROR_TITLE_EMPTY = "Title cannot be empty";
-    private final static String ERROR_REMINDER_NULL = "Reminder cannot be null";
-    private final static String ERROR_REMINDER_IN_PAST = "Reminder must be tomorrow or later";
+    private final static String ERROR_EXPIRY_NULL = "Expiry cannot be null";
+    private final static String ERROR_EXPIRY_IN_PAST = "Expiry must be tomorrow or later";
 
     static Result titleResult(final String title) {
         return chain()
@@ -24,10 +24,10 @@ abstract class AccountArgChecker<R extends ArgResults, E extends ArgException> e
                 .firstFailing();
     }
 
-    static Result reminderResult(final Date reminder) {
+    static Result expiryResult(final Date expiry) {
         return chain()
-                .add(delayed(() -> reminder != null, ERROR_REMINDER_NULL))
-                .add(delayed(() -> reminder.compareTo(Dates.midnightTomorrow()) >= 0, ERROR_REMINDER_IN_PAST))
+                .add(delayed(() -> expiry != null, ERROR_EXPIRY_NULL))
+                .add(delayed(() -> expiry.compareTo(Dates.midnightTomorrow()) >= 0, ERROR_EXPIRY_IN_PAST))
                 .firstFailing();
     }
 }

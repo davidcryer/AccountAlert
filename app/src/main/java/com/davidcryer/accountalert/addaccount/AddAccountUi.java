@@ -4,7 +4,7 @@ import com.davidcryer.accountalert.common.domain.AccountSubmission;
 
 public interface AddAccountUi {
     void titleError(String error);
-    void reminderError(String error);
+    void expiryError(String error);
     void genericError(String error);
     void dismiss();
 

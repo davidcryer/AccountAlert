@@ -39,7 +39,7 @@ import butterknife.Unbinder;
 public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, AddAccountUi.Listener, UiWrapperFactory> {
     private Unbinder unbinder;
     private DatePickerDialog datePickerDialog;
-    private Date selectedReminder;
+    private Date selectedExpiry;
     private String selectedRepeatType;
     @BindView(R.id.title_layout)
     TextInputLayout titleInputLayout;
@@ -51,8 +51,8 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     EditText descriptionEdit;
     @BindView(R.id.repeat_type)
     Spinner repeatTypeSpinner;
-    @BindView(R.id.reminder)
-    TextView reminderText;
+    @BindView(R.id.expiry)
+    TextView expiryText;
 
     @Nullable
     @Override
@@ -102,8 +102,8 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
         getActivity().setTitle(R.string.screen_title_add_account);
     }
 
-    @OnClick(R.id.reminder)
-    void openReminderDialog() {
+    @OnClick(R.id.expiry)
+    void openExpiryDialog() {
         final Context context = getContext();
         if (context != null) {
             final Calendar c = Calendar.getInstance();
@@ -117,9 +117,9 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     }
 
     private void onSelect(final Date date) {
-        selectedReminder = date;
+        selectedExpiry = date;
         final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
-        reminderText.setText(dateFormat.format(selectedReminder));
+        expiryText.setText(dateFormat.format(selectedExpiry));
     }
 
     @OnClick(R.id.submit)
@@ -128,7 +128,7 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
     }
 
     private AccountSubmission submission() {
-        return new AccountSubmission(titleEdit.getText().toString(), descriptionEdit.getText().toString(), selectedReminder, RepeatType.from(selectedRepeatType));
+        return new AccountSubmission(titleEdit.getText().toString(), descriptionEdit.getText().toString(), selectedExpiry, RepeatType.from(selectedRepeatType));
     }
 
     @Override
@@ -142,7 +142,7 @@ public class AddAccountFragment extends UiWrapperFactoryFragment<AddAccountUi, A
             }
 
             @Override
-            public void reminderError(String error) {
+            public void expiryError(String error) {
                 genericError(error);
             }
 

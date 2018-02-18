@@ -12,7 +12,7 @@ public class AlarmIntentFactory {
     }
 
     AlarmIntent reminder(final Context context, final Account account) {
-        return new ReminderAlarmIntent(context, account.id().toString(), account.title(), account.reminder().toString());//TODO format date
+        return new ReminderAlarmIntent(context, account.id().toString(), account.title(), account.expiry().toString());//TODO format date
     }
 
     static AlarmIntent from(final Context context, final Intent intent) {

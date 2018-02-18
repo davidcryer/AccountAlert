@@ -41,8 +41,8 @@ public class AddAccountInteractor extends Interactor {
             }
 
             @Override
-            public void reminder(String error) {
-                onErrorCallback.reminder(error);
+            public void expiry(String error) {
+                onErrorCallback.expiry(error);
             }
 
             @Override
@@ -58,7 +58,7 @@ public class AddAccountInteractor extends Interactor {
 
     public interface OnErrorCallback {
         void title(String error);
-        void reminder(String error);
+        void expiry(String error);
         void unknown(String error);
     }
 }

@@ -5,30 +5,30 @@ import com.davidcryer.argrules.multiarg.Result;
 
 public class AccountInitialisationResults extends ArgResults {
     private final Result title;
-    private final Result reminder;
+    private final Result expiry;
 
-    AccountInitialisationResults(Result title, Result reminder) {
+    AccountInitialisationResults(Result title, Result expiry) {
         this.title = title;
-        this.reminder = reminder;
+        this.expiry = expiry;
     }
 
     @Override
     protected Result[] asArray() {
-        return new Result[] {title, reminder};
+        return new Result[] {title, expiry};
     }
 
     public void forErrors(final ErrorCallback errorCallback) {
         if (!title.passed()) {
             errorCallback.title(title.note());
         }
-        if (!reminder.passed()) {
-            errorCallback.reminder(reminder.note());
+        if (!expiry.passed()) {
+            errorCallback.expiry(expiry.note());
         }
     }
 
     public interface ErrorCallback {
         void title(String error);
-        void reminder(String error);
+        void expiry(String error);
         void unknown(String error);
     }
 }

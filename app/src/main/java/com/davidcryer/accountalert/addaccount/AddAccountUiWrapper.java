@@ -49,8 +49,8 @@ public class AddAccountUiWrapper extends UiWrapper<AddAccountUi, AddAccountUi.Li
         }
 
         @Override
-        public void reminder(String error) {
-            uiModel().reminder(ui(), error);
+        public void expiry(String error) {
+            uiModel().expiry(ui(), error);
         }
 
         @Override

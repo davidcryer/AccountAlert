@@ -10,8 +10,8 @@ public class AccountEditChecker extends AccountArgChecker<AccountEditResults, Ba
         return this;
     }
 
-    AccountEditChecker reminder(final Date reminder) {
-        resultsBuilder.reminder(reminderResult(reminder));
+    AccountEditChecker expiry(final Date expiry) {
+        resultsBuilder.expiry(expiryResult(expiry));
         return this;
     }
 

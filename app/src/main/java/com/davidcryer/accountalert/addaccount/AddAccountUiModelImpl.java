@@ -5,13 +5,13 @@ import android.support.annotation.NonNull;
 
 public class AddAccountUiModelImpl implements AddAccountUiModel {
     private String titleError;
-    private String reminderError;
+    private String expiryError;
     private String genericError;
     private boolean dismiss;
 
     public AddAccountUiModelImpl() {
         this.titleError = "";
-        this.reminderError = "";
+        this.expiryError = "";
         this.genericError = "";
         this.dismiss = false;
     }
@@ -33,11 +33,11 @@ public class AddAccountUiModelImpl implements AddAccountUiModel {
     }
 
     @Override
-    public void reminder(AddAccountUi ui, String error) {
+    public void expiry(AddAccountUi ui, String error) {
         if (ui != null) {
-            ui.reminderError(error);
+            ui.expiryError(error);
         }
-        this.reminderError = error;
+        this.expiryError = error;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class AddAccountUiModelImpl implements AddAccountUiModel {
     @Override
     public void onto(@NonNull AddAccountUi ui) {
         ui.titleError(titleError);
-        ui.reminderError(reminderError);
+        ui.expiryError(expiryError);
         ui.genericError(genericError);
         if (dismiss) {
             ui.dismiss();
@@ -66,12 +66,12 @@ public class AddAccountUiModelImpl implements AddAccountUiModel {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.titleError);
-        dest.writeString(this.reminderError);
+        dest.writeString(this.expiryError);
     }
 
     private AddAccountUiModelImpl(Parcel in) {
         this.titleError = in.readString();
-        this.reminderError = in.readString();
+        this.expiryError = in.readString();
     }
 
     public static final Creator<AddAccountUiModelImpl> CREATOR = new Creator<AddAccountUiModelImpl>() {

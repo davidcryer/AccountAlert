@@ -5,43 +5,43 @@ import com.davidcryer.argrules.multiarg.Result;
 
 public class AccountEditResults extends ArgResults {
     private final Result title;
-    private final Result reminder;
+    private final Result expiry;
 
-    AccountEditResults(Result title, Result reminder) {
+    AccountEditResults(Result title, Result expiry) {
         this.title = title;
-        this.reminder = reminder;
+        this.expiry = expiry;
     }
 
     public Result title() {
         return title;
     }
 
-    public Result reminder() {
-        return reminder;
+    public Result expiry() {
+        return expiry;
     }
 
     @Override
     protected Result[] asArray() {
-        return new Result[] {title(), reminder()};
+        return new Result[] {title(), expiry()};
     }
 
     static class Builder implements ArgResults.Builder<AccountEditResults> {
         private Result title;
-        private Result reminder;
+        private Result expiry;
 
         Builder title(Result title) {
             this.title = title;
             return this;
         }
 
-        Builder reminder(Result reminder) {
-            this.reminder = reminder;
+        Builder expiry(Result expiry) {
+            this.expiry = expiry;
             return this;
         }
 
         @Override
         public AccountEditResults results() {
-            return new AccountEditResults(title, reminder);
+            return new AccountEditResults(title, expiry);
         }
     }
 }

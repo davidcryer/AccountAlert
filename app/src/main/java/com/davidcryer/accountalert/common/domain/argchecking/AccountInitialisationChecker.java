@@ -7,12 +7,12 @@ import java.util.Date;
 public class AccountInitialisationChecker extends AccountArgChecker<AccountInitialisationResults, BadAccountInitialisationException> {
     private final AccountInitialisationResults results;
 
-    private AccountInitialisationChecker(final String title, final Result reminderResult) {
-        results = new AccountInitialisationResults(titleResult(title), reminderResult);
+    private AccountInitialisationChecker(final String title, final Result expiryResult) {
+        results = new AccountInitialisationResults(titleResult(title), expiryResult);
     }
 
-    public static void check(final String title, final Date reminder) throws BadAccountInitialisationException {
-        new AccountInitialisationChecker(title, reminderResult(reminder)).check();
+    public static void check(final String title, final Date expiry) throws BadAccountInitialisationException {
+        new AccountInitialisationChecker(title, expiryResult(expiry)).check();
     }
 
     @Override

@@ -16,7 +16,7 @@ public class AlarmService {
     }
 
     public void register(final Account account) {
-        ServiceProvider.alarm(context, alarmManager -> alarmManager.set(AlarmManager.RTC, account.reminder().getTime(), pendingIntentFactory.forExpiry(account)));
+        ServiceProvider.alarm(context, alarmManager -> alarmManager.set(AlarmManager.RTC, account.expiry().getTime(), pendingIntentFactory.forExpiry(account)));
     }
 
     public void deregister(final Account account) {

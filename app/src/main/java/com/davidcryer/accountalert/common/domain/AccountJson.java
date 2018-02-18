@@ -5,13 +5,13 @@ import java.util.Date;
 public class AccountJson {
     private final String title;
     private final String description;
-    private final Date reminder;
+    private final Date expiry;
     private final RepeatType repeatType;
 
-    public AccountJson(String title, String description, Date reminder, RepeatType repeatType) {
+    public AccountJson(String title, String description, Date expiry, RepeatType repeatType) {
         this.title = title;
         this.description = description;
-        this.reminder = reminder;
+        this.expiry = expiry;
         this.repeatType = repeatType;
     }
 
@@ -23,8 +23,8 @@ public class AccountJson {
         return description;
     }
 
-    public Date getReminder() {
-        return reminder;
+    public Date getExpiry() {
+        return expiry;
     }
 
     public RepeatType getRepeatType() {
