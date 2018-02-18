@@ -39,7 +39,7 @@ abstract class AlarmIntent {
     abstract String actionType();
 
     private Intent intent(final String action, final String title) {
-        return new Intent(context, ReminderReceiver.class).setAction(action).putExtra(ARG_TITLE, title);
+        return new Intent(context, AccountReceiver.class).setAction(action).putExtra(ARG_TITLE, title);
     }
 
     void sendNotification() {
