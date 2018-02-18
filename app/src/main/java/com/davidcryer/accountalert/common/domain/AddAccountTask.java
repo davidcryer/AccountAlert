@@ -1,7 +1,7 @@
 package com.davidcryer.accountalert.common.domain;
 
 import com.davidcryer.accountalert.common.domain.argchecking.BadAccountInitialisationException;
-import com.davidcryer.accountalert.common.domain.reminder.AlarmService;
+import com.davidcryer.accountalert.common.domain.notifications.AlarmService;
 
 public class AddAccountTask {
     private final AlarmService alarmService;
