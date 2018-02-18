@@ -1,4 +1,4 @@
-package com.davidcryer.accountalert.common.domain.reminder;
+package com.davidcryer.accountalert.common.domain.notifications;
 
 import android.content.Context;
 import android.content.Intent;

@@ -13,14 +13,13 @@ import com.davidcryer.accountalert.common.domain.AddAccountTask;
 import com.davidcryer.accountalert.common.domain.GetAccountsInteractor;
 import com.davidcryer.accountalert.common.domain.GetAccountsTask;
 import com.davidcryer.accountalert.common.domain.SharedPreferencesAccountDb;
-import com.davidcryer.accountalert.common.domain.reminder.AlarmIntentFactory;
-import com.davidcryer.accountalert.common.domain.reminder.AlarmPendingIntentFactory;
-import com.davidcryer.accountalert.common.domain.reminder.AlarmService;
+import com.davidcryer.accountalert.common.domain.notifications.AlarmIntentFactory;
+import com.davidcryer.accountalert.common.domain.notifications.AlarmPendingIntentFactory;
+import com.davidcryer.accountalert.common.domain.notifications.AlarmService;
 import com.davidcryer.accountalert.common.framework.uiwrapper.UiWrapperFactory;
 import com.google.gson.Gson;
 
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 

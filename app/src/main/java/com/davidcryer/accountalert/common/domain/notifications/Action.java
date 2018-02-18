@@ -1,4 +1,4 @@
-package com.davidcryer.accountalert.common.domain.reminder;
+package com.davidcryer.accountalert.common.domain.notifications;
 
 class Action {
     private final static String DELIMITER = "_";
