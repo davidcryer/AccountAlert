@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-public class ReminderReceiver extends BroadcastReceiver {
+public class AccountReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         final AlarmIntent alarmIntent = AlarmIntentFactory.from(context, intent);

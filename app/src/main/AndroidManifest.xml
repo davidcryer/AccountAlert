@@ -17,6 +17,6 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".common.domain.notifications.ReminderReceiver" />
+        <receiver android:name=".common.domain.notifications.AccountReceiver" />
     </application>
 </manifest>
