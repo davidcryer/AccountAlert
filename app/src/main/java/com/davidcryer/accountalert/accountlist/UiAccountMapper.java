@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class UiAccountMapper {
-    private final static String REPEAT_TYPE_NEVER = "Never";
 
     static List<UiAccount> from(final AccountList accountList) {
         return accountList.accounts().map(UiAccountMapper::from).collect(Collectors.toList());
@@ -28,6 +27,6 @@ class UiAccountMapper {
     }
 
     private static String from(@Nullable final RepeatType repeatType) {
-        return repeatType == null ? REPEAT_TYPE_NEVER : repeatType.toString();
+        return repeatType == null ? RepeatType.NEVER_STR : repeatType.toString();
     }
 }
